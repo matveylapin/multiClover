@@ -60,7 +60,7 @@ def updateDroneSize():
     if (temp1 <= 0) or (temp2 <= 0):
         mb.showerror('Error', 'Nice joke, drone size <=0\n Good work!!')
     elif temp2 > temp1:
-        mp.showerror('Drone size > base size.')
+        mb.showerror('Error', 'Drone size > base size')
     else:
         drawAllDrones(DRONE_SIZE, temp1)
         BASE_SIZE = temp2
@@ -68,7 +68,10 @@ def updateDroneSize():
 
 
 def getFiles():
-    generateFiles([i.copy() for i in drones], DRONE_SIZE, BASE_SIZE)
+    if len(drones) == 0:
+        mb.showerror('Error', 'Drone field is empty')
+    else:
+        generateFiles([i.copy() for i in drones], DRONE_SIZE, BASE_SIZE)
 
 root.title('Geometry generator')
 root.rowconfigure(0, minsize=1000, weight=1)
