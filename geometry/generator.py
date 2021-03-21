@@ -72,6 +72,7 @@ def getFiles():
         mb.showerror('Error', 'Drone field is empty')
     else:
         generateFiles([i.copy() for i in drones], DRONE_SIZE, BASE_SIZE)
+        mb.showinfo('INFO', 'Generate is seccess!')
 
 root.title('Geometry generator')
 root.rowconfigure(0, minsize=1000, weight=1)
@@ -90,6 +91,9 @@ lable2 = tk.Label(control_frame, text = 'Motor base size(mm):', fg = 'white', bg
 edtBaseSize = tk.Entry(control_frame)
 btnApplySize = tk.Button(control_frame, text='Apply', command=updateDroneSize)
 btnGenerateFiles = tk.Button(control_frame, text='Generate', command=getFiles)
+
+edtDroneSize.insert(tk.END, str(DRONE_SIZE))
+edtBaseSize.insert(tk.END, str(BASE_SIZE))
 
 lable1.grid(row=0, column=0, sticky="ew", padx=10, pady=10)
 edtDroneSize.grid(row=1, column=0, sticky="ew", padx=10)
